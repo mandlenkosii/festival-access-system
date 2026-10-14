@@ -200,3 +200,27 @@ if (topCustomer.spend >= 1000) {
     console.log("Reward: Backstage Upgrade");
 }
 
+// CHALLENGE 10
+
+console.log("===== CHALLENGE 10: VENUE CAPACITY =====");
+
+let capacity = 5;
+let peopleInside = 0;
+
+for (let attendee of attendees) {
+    if (attendee.age >= 18 && attendee.hasTicket === true) {
+        peopleInside++;
+        attendee.checkedIn = true;
+
+        console.log(attendee.name + " entered.");
+        console.log("People inside: " + peopleInside + " / " + capacity);
+
+        if (peopleInside === capacity) {
+            console.log("VENUE FULL");
+            console.log("STOP ADMITTING PEOPLE");
+            break;
+        }
+    } else {
+        console.log(attendee.name + " was denied entry.");
+    }
+}

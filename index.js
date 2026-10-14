@@ -99,3 +99,15 @@ if (found === false) {
     console.log("ATTENDEE NOT FOUND");
 }
 
+// CHALLENGE 6
+
+
+console.log("===== CHALLENGE 6: SECURITY FAST LANE =====");
+
+for (let attendee of attendees) {
+    if (attendee.hasTicket === false) {
+        continue;
+    }
+
+    console.log("Checking " + attendee.name + "...");
+}

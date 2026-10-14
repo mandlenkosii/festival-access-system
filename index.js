@@ -246,3 +246,141 @@ while (minutes >= 1) {
 }
 
 console.log("FESTIVAL CLOSED");
+
+
+// DASHBOARD CONTROL
+
+console.log("===== FESTIVAL CONTROL =====");
+console.log("1 - View Attendee Queue");
+console.log("2 - Process Entry");
+console.log("3 - View VIP Guests");
+console.log("4 - View Denied Attendees");
+console.log("5 - View Festival Statistics");
+console.log("6 - Find Biggest Spender");
+console.log("7 - Close Festival");
+
+let option = 2;
+
+switch (option) {
+    case 1:
+        console.log("ATTENDEE QUEUE");
+
+        for (let attendee of attendees) {
+            console.log(attendee.name + " - " + attendee.ticket);
+        }
+        break;
+
+    case 2:
+        console.log("PROCESSING ENTRY");
+
+        let dashboardInside = 0;
+        let dashboardCapacity = 5;
+
+        for (let attendee of attendees) {
+            if (attendee.age >= 18 && attendee.hasTicket === true) {
+                if (dashboardInside < dashboardCapacity) {
+                    dashboardInside++;
+                    console.log(attendee.name + " -> ENTRY APPROVED");
+                } else {
+                    console.log("VENUE FULL - STOP ADMITTING PEOPLE");
+                    break;
+                }
+            } else if (attendee.age < 18) {
+                console.log(attendee.name + " -> DENIED: UNDER 18");
+            } else {
+                console.log(attendee.name + " -> DENIED: NO VALID TICKET");
+            }
+        }
+        break;
+
+    case 3:
+        console.log("ELIGIBLE VIP GUESTS");
+
+        for (let attendee of attendees) {
+            if (
+                attendee.ticket === "VIP" &&
+                attendee.hasTicket === true &&
+                attendee.age >= 18
+            ) {
+                console.log(attendee.name);
+            }
+        }
+        break;
+
+    case 4:
+        console.log("DENIED ATTENDEES");
+
+        for (let attendee of attendees) {
+            if (attendee.age < 18) {
+                console.log(attendee.name + " -> UNDER 18");
+            } else if (attendee.hasTicket === false) {
+                console.log(attendee.name + " -> NO VALID TICKET");
+            }
+        }
+        break;
+
+    case 5:
+        console.log("FESTIVAL STATISTICS");
+
+        let dashboardValid = 0;
+        let dashboardInvalid = 0;
+        let dashboardUnder18 = 0;
+        let dashboardVIP = 0;
+        let dashboardGeneral = 0;
+        let dashboardSpend = 0;
+
+        for (let attendee of attendees) {
+            if (attendee.hasTicket === true) {
+                dashboardValid++;
+            } else {
+                dashboardInvalid++;
+            }
+
+            if (attendee.age < 18) {
+                dashboardUnder18++;
+            }
+
+            if (attendee.ticket === "VIP") {
+                dashboardVIP++;
+            } else if (attendee.ticket === "General") {
+                dashboardGeneral++;
+            }
+
+            dashboardSpend = dashboardSpend + attendee.spend;
+        }
+
+        console.log("Total attendees: " + attendees.length);
+        console.log("Valid tickets: " + dashboardValid);
+        console.log("Invalid tickets: " + dashboardInvalid);
+        console.log("Under 18: " + dashboardUnder18);
+        console.log("VIP guests: " + dashboardVIP);
+        console.log("General guests: " + dashboardGeneral);
+        console.log("Total spending: R" + dashboardSpend);
+        console.log(
+            "Average spending: R" +
+            (dashboardSpend / attendees.length).toFixed(2)
+        );
+        break;
+
+    case 6:
+        console.log("BIGGEST SPENDER");
+
+        let dashboardTop = attendees[0];
+
+        for (let attendee of attendees) {
+            if (attendee.spend > dashboardTop.spend) {
+                dashboardTop = attendee;
+            }
+        }
+
+        console.log("Name: " + dashboardTop.name);
+        console.log("Amount spent: R" + dashboardTop.spend);
+        break;
+
+    case 7:
+        console.log("FESTIVAL CLOSED");
+        break;
+
+    default:
+        console.log("Invalid menu option");
+}

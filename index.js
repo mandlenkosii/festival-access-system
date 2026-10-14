@@ -224,3 +224,25 @@ for (let attendee of attendees) {
         console.log(attendee.name + " was denied entry.");
     }
 }
+
+// CHALLENGE 11
+
+console.log("===== CHALLENGE 11: COUNTDOWN =====");
+
+let minutes = 10;
+
+while (minutes >= 1) {
+    console.log("Festival closes in " + minutes + " minute(s)...");
+
+    if (minutes === 5) {
+        console.log("WARNING: LAST ENTRY HAS ENDED");
+    }
+
+    if (minutes === 2) {
+        console.log("PLEASE PROCEED TO THE EXIT");
+    }
+
+    minutes--;
+}
+
+console.log("FESTIVAL CLOSED");

@@ -111,3 +111,20 @@ for (let attendee of attendees) {
 
     console.log("Checking " + attendee.name + "...");
 }
+
+// CHALLANGE 7
+
+
+console.log("===== CHALLENGE 7: FOOD VOUCHERS =====");
+
+for (let attendee of attendees) {
+    if (attendee.spend >= 1000) {
+        console.log(attendee.name + " -> R200 food voucher");
+    } else if (attendee.spend >= 500) {
+        console.log(attendee.name + " -> R100 food voucher");
+    } else if (attendee.spend >= 300) {
+        console.log(attendee.name + " -> R50 food voucher");
+    } else {
+        console.log(attendee.name + " -> No voucher");
+    }
+}

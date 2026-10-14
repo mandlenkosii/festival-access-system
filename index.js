@@ -35,3 +35,25 @@ for (let attendee of attendees) {
     }
 }
 
+// CHALLENGE 3
+
+console.log("===== CHALLENGE 3: ACCESS ZONES =====");
+
+for (let attendee of attendees) {
+    if (attendee.age >= 18 && attendee.hasTicket === true) {
+        console.log("Name: " + attendee.name);
+
+        switch (attendee.ticket) {
+            case "VIP":
+                console.log("Wristband: GOLD");
+                break;
+
+            case "General":
+                console.log("Wristband: BLUE");
+                break;
+
+            default:
+                console.log("Wristband: UNKNOWN TICKET TYPE");
+        }
+    }
+}

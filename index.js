@@ -128,3 +128,53 @@ for (let attendee of attendees) {
         console.log(attendee.name + " -> No voucher");
     }
 }
+
+//CHALLENGE 8
+
+
+console.log("===== CHALLENGE 8: FESTIVAL STATISTICS =====");
+
+let totalAttendees = attendees.length;
+let validTickets = 0;
+let invalidTickets = 0;
+let under18 = 0;
+let vipCount = 0;
+let generalCount = 0;
+let totalSpend = 0;
+let biggestSpender = attendees[0];
+
+for (let attendee of attendees) {
+    if (attendee.hasTicket === true) {
+        validTickets++;
+    } else {
+        invalidTickets++;
+    }
+
+    if (attendee.age < 18) {
+        under18++;
+    }
+
+    if (attendee.ticket === "VIP") {
+        vipCount++;
+    } else if (attendee.ticket === "General") {
+        generalCount++;
+    }
+
+    totalSpend = totalSpend + attendee.spend;
+
+    if (attendee.spend > biggestSpender.spend) {
+        biggestSpender = attendee;
+    }
+}
+
+let averageSpend = totalSpend / totalAttendees;
+
+console.log("Total attendees: " + totalAttendees);
+console.log("Valid tickets: " + validTickets);
+console.log("Invalid tickets: " + invalidTickets);
+console.log("Under 18: " + under18);
+console.log("VIP ticket holders: " + vipCount);
+console.log("General ticket holders: " + generalCount);
+console.log("Total spending: R" + totalSpend);
+console.log("Average spending: R" + averageSpend.toFixed(2));
+console.log("Highest spender: " + biggestSpender.name);

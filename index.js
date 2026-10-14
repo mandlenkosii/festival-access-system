@@ -57,3 +57,19 @@ for (let attendee of attendees) {
         }
     }
 }
+
+// CHALLENGE 4
+
+console.log("===== CHALLENGE 4: VIP LOUNGE =====");
+
+for (let attendee of attendees) {
+    if (
+        attendee.hasTicket === true &&
+        attendee.ticket === "VIP" &&
+        attendee.age >= 18
+    ) {
+        console.log(attendee.name + " -> VIP LOUNGE ACCESS APPROVED");
+    } else if (attendee.ticket === "VIP") {
+        console.log(attendee.name + " -> VIP LOUNGE ACCESS DENIED");
+    }
+}

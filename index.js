@@ -178,3 +178,25 @@ console.log("General ticket holders: " + generalCount);
 console.log("Total spending: R" + totalSpend);
 console.log("Average spending: R" + averageSpend.toFixed(2));
 console.log("Highest spender: " + biggestSpender.name);
+
+//CHALLENGE 9
+
+
+console.log("===== CHALLENGE 9: BIGGEST SPENDER =====");
+
+let topCustomer = attendees[0];
+
+for (let attendee of attendees) {
+    if (attendee.spend > topCustomer.spend) {
+        topCustomer = attendee;
+    }
+}
+
+console.log("===== TOP CUSTOMER =====");
+console.log("Name: " + topCustomer.name);
+console.log("Amount Spent: R" + topCustomer.spend);
+
+if (topCustomer.spend >= 1000) {
+    console.log("Reward: Backstage Upgrade");
+}
+

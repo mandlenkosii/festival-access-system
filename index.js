@@ -21,3 +21,17 @@ for (let attendee of attendees) {
     console.log("Ticket: " + attendee.ticket);
     console.log("Valid Ticket: " + attendee.hasTicket);
 }
+//  CHALLENGE 2
+
+console.log("===== CHALLENGE 2: WHO CAN ENTER? =====");
+
+for (let attendee of attendees) {
+    if (attendee.age >= 18 && attendee.hasTicket === true) {
+        console.log(attendee.name + " -> ENTRY APPROVED");
+    } else if (attendee.age < 18) {
+        console.log(attendee.name + " -> ENTRY DENIED: UNDER 18");
+    } else {
+        console.log(attendee.name + " -> ENTRY DENIED: NO VALID TICKET");
+    }
+}
+
